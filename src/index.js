@@ -17,7 +17,7 @@ export default function nodeResolve ( options = {} ) {
 	const preferBuiltins = isPreferBuiltinsSet ? options.preferBuiltins : true;
 	const customResolveOptions = options.customResolveOptions || {};
 	const jail = options.jail;
-	const aliases = options.alias || {};
+	const alias = options.alias || {};
 
 	const onwarn = options.onwarn || CONSOLE_WARN;
 	const resolveId = options.browser ? browserResolve : _nodeResolve;
@@ -41,7 +41,6 @@ export default function nodeResolve ( options = {} ) {
 
 			const parts = importee.split( /[\/\\]/ );
 			let id = parts.shift();
-			const alias = aliases[id];
 
 			if ( id[0] === '@' && parts.length ) {
 				// scoped packages
@@ -49,8 +48,12 @@ export default function nodeResolve ( options = {} ) {
 			} else if ( id[0] === '.' ) {
 				// an import relative to the parent dir of the importer
 				id = resolve( importer, '..', importee );
-			} else if ( alias ) {
-				importee = alias + "/" + parts.join("/");
+			}
+
+			for (const i in alias) {
+				if ( importee.startsWith(i) ) {
+					importee = alias[i] + importee.substring( i.length );
+				}
 			}
 
 			return new Promise( ( fulfil, reject ) => {
