@@ -61,6 +61,11 @@ export default {
       // to node-resolve
       customResolveOptions: {
         moduleDirectory: 'js_modules'
+      },
+
+      // if the imported module starts with the key, replace that with the value
+      alias: {
+        path: "special-path-module"
       }
     })
   ]
