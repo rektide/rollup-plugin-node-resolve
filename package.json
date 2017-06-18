@@ -1,7 +1,7 @@
 {
-  "name": "rollup-plugin-node-resolve",
-  "description": "Bundle third-party dependencies in node_modules",
-  "version": "3.0.0",
+  "name": "rollup-plugin-node-resolve-with-alias",
+  "description": "Fork of rollup-plugin-node-resolve with aliases",
+  "version": "3.0.1",
   "devDependencies": {
     "buble": "^0.15.2",
     "es5-ext": "^0.10.11",
@@ -34,7 +34,7 @@
     "is-module": "^1.0.0",
     "resolve": "^1.1.6"
   },
-  "repository": "rollup/rollup-plugin-node-resolve",
+  "repository": "rektide/rollup-plugin-node-resolve-with-alias",
   "keywords": [
     "rollup",
     "rollup-plugin",
@@ -42,7 +42,7 @@
     "npm",
     "modules"
   ],
-  "author": "Rich Harris <richard.a.harris@gmail.com>",
+  "author": "rektide",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rollup/rollup-plugin-node-resolve/issues"
